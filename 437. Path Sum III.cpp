@@ -15,7 +15,10 @@ public:
         if(!root) return;
         currSum+=root->val;
         path+=mp[currSum-targetSum];
-        mp[currSum]++;
+        // freq increase later only  
+        // ex:- root = [1] and target = 0 than curr_Sum=1 and currsum-target=1 and mp[1]=1 (freq increase before) 
+        // path = 1 but actually path=0 thus later freq increase 
+        mp[currSum]++; 
         dfs(root->left,currSum,targetSum,path,mp);
         dfs(root->right,currSum,targetSum,path,mp);
         mp[currSum]--;
